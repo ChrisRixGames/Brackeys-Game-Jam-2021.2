@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3710161228158012089}
+  - component: {fileID: 3048217812994671860}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -33,6 +34,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3048217812994671860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18270885175095816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe2deb670a9488449b47f6bf3115a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stirringRod: {fileID: 3344533013164732344}
+  recipes:
+  - {fileID: 11400000, guid: 63a7165c98f9c7448a42d4c2b03cc9c3, type: 2}
+  currentProgress: 0
+  endProgress: 0
+  failPoint: 0
 --- !u!1 &3344533013164732344
 GameObject:
   m_ObjectHideFlags: 0

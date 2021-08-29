@@ -4,29 +4,17 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void AddReagent(/*add reagent class*/);
+    void AddReagent(Item item);
 
-    void Interact();
+    void Automate(float duration, float str);
+
+    void StopAutomate();
+
+    void BeginInteracting(PlayerScript play, bool playerAct);
+
+    void StopInteracting();
 
     void Finish();
 
     void Fail();
-
-    float currentProgress
-    {
-        get;
-        set;
-    }
-
-    float endProgress
-    {
-        get;
-        set;
-    }
-
-    float failPoint
-    {
-        get;
-        set;
-    }
 }
