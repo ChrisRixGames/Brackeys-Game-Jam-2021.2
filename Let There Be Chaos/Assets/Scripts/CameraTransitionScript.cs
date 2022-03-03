@@ -47,6 +47,7 @@ public class CameraTransitionScript : MonoBehaviour
 
     private IEnumerator TransitionLerp(int id)
     {
+        
         while (confiner2D.m_Damping != 0 && vCam.m_Lens.OrthographicSize != cameraZoneLensSize[id])
         {
             confiner2D.m_Damping = Mathf.MoveTowards(confiner2D.m_Damping, 0, dampeningTransitionSpeed * Time.deltaTime);
@@ -59,13 +60,21 @@ public class CameraTransitionScript : MonoBehaviour
 
     private IEnumerator TransitionLerp(PolygonCollider2D collider, float lensSize)
     {
-        Debug.Log("Transitioning");
-        while (confiner2D.m_Damping != 0 && vCam.m_Lens.OrthographicSize != lensSize)
+        float lensSizeBuffer = Camera.main.orthographicSize;
+        vCam.m_Lens.OrthographicSize = lensSize;
+        Camera.main.orthographicSize = lensSizeBuffer;
+
+        float dts;
+        float sts = 3* Mathf.Abs(lensSize - lensSizeBuffer);
+        
+        while (confiner2D.m_Damping != 0 || Camera.main.orthographicSize != lensSize)
         {
             confiner2D.m_Damping = Mathf.MoveTowards(confiner2D.m_Damping, 0, dampeningTransitionSpeed * Time.deltaTime);
-            Camera.main.orthographicSize = Mathf.MoveTowards(vCam.m_Lens.OrthographicSize, lensSize, sizeTransitionSpeed * Time.deltaTime);
+            lensSizeBuffer = Mathf.MoveTowards(lensSizeBuffer, lensSize, sts * Time.deltaTime);
+            Camera.main.orthographicSize = lensSizeBuffer;
             yield return null;
         }
+        Debug.Log(confiner2D.m_Damping);
 
         yield return null;
     }

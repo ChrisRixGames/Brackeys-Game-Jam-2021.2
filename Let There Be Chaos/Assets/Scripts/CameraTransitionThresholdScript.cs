@@ -20,7 +20,6 @@ public class CameraTransitionThresholdScript : MonoBehaviour
     private void Awake()
     {
         transitionScript = Camera.main.GetComponent<VirtualCameraGetter>().GetVirtualCamera().GetComponent<CameraTransitionScript>();
-        Debug.Log(Camera.main.GetComponent<VirtualCameraGetter>());
     }
 
     // Start is called before the first frame update
